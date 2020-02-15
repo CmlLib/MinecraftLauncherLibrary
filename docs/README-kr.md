@@ -40,7 +40,13 @@ DotNetZip
 
 아래는 간략한 사용방법만 소개합니다. 자세한 정보는 wiki로
 
-**[Sample Code](https://github.com/AlphaBs/MinecraftLauncherLibrary/wiki/Sample-Code)**
+**[간단한 샘플 소스코드](https://github.com/AlphaBs/MinecraftLauncherLibrary/wiki/Sample-Code)**
+
+**[샘플 런처 (CmlLibSample)](https://github.com/AlphaBs/MinecraftLauncherLibrary/releases)**  
+SampleLauncher.zip 를 다운로드하고 압축을 푼 후 CmlLibSample.exe 를 실행하세요.  
+
+**[CmlLibSample 소스코드](https://github.com/AlphaBs/MinecraftLauncherLibrary/tree/master/CmlLibSample)**  
+빌드하기전에 Nuget 패키지 복원을 해주세요.
 
 ### **1. 준비**
 
@@ -59,7 +65,7 @@ Nuget 패키지 관리자에서 'CustomMinecraftLauncher' 를 검색하고 설�
       Minecraft.Initialize("게임폴더 경로");
 
 위 코드가 게임 파일 다운로드, 프로필 로드, 게임 세션 저장, 실행 등에 필요한 게임 폴더를 설정합니다.  
-**절대 경로를 입력해 주세요.**
+**절대 경로(Abstract Path)를 입력해 주세요.**
 
 ### **3. 로그인**
 
