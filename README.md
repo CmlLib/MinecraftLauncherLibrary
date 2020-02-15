@@ -46,7 +46,13 @@ DotNetZip
 
 If you want to learn more features of this library such as to download java runtime or launch with more detailed options, go to wiki
 
-**[Sample Code](https://github.com/AlphaBs/MinecraftLauncherLibrary/wiki/Sample-Code)**
+**[Simple Sample Code](https://github.com/AlphaBs/MinecraftLauncherLibrary/wiki/Sample-Code)**  
+
+**[Sample Launcher (CmlLibSample)](https://github.com/AlphaBs/MinecraftLauncherLibrary/releases)**  
+Download CmlLibSample.zip file, unzip file and execute CmlLibSample.exe
+
+**[CmlLibSample Source Code](https://github.com/AlphaBs/MinecraftLauncherLibrary/tree/master/CmlLibSample)**  
+Restore nuget packages before building. (package name : CustomMinecraftLauncher)
 
 ### **1. Prepare**
 
