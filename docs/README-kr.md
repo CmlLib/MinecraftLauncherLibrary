@@ -48,6 +48,8 @@ SampleLauncher.zip 를 다운로드하고 압축을 푼 후 CmlLibSample.exe 를
 **[CmlLibSample 소스코드](https://github.com/AlphaBs/MinecraftLauncherLibrary/tree/master/CmlLibSample)**  
 빌드하기전에 Nuget 패키지 복원을 해주세요.
 
+아래 나온 순서대로 소스코드를 입력하면 런처가 완성됩니다.
+
 ### **1. 준비**
 
 Nuget 패키지 관리자에서 'CustomMinecraftLauncher' 를 검색하고 설치하세요.  
