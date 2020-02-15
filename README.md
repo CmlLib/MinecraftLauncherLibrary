@@ -54,6 +54,8 @@ Download CmlLibSample.zip file, unzip file and execute CmlLibSample.exe
 **[CmlLibSample Source Code](https://github.com/AlphaBs/MinecraftLauncherLibrary/tree/master/CmlLibSample)**  
 Restore nuget packages before building. (package name : CustomMinecraftLauncher)
 
+Enter the source code in the order shown below.
+
 ### **1. Prepare**
 
 Install Nuget Package 'CustomMinecraftLauncher'  
