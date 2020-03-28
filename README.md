@@ -42,7 +42,7 @@ DotNetZip
 - [x] Launch with options (direct server connecting, screen resolution)
 - [ ] Support cross-platform (use [pml](https://github.com/AlphaBs/pml) if you want crossplatform)
 
-## How To Use
+## Sample
 
 If you want to learn more features of this library such as to download java runtime or launch with more detailed options, go to wiki
 
@@ -51,8 +51,28 @@ If you want to learn more features of this library such as to download java runt
 **[Sample Launcher (CmlLibSample)](https://github.com/AlphaBs/MinecraftLauncherLibrary/releases)**  
 Download CmlLibSample.zip file, unzip file and execute CmlLibSample.exe
 
-**[CmlLibSample Source Code](https://github.com/AlphaBs/MinecraftLauncherLibrary/tree/master/CmlLibSample)**  
-Restore nuget packages before building. (package name : CustomMinecraftLauncher)
+**[CmlLibSample Source Code](https://github.com/AlphaBs/MinecraftLauncherLibrary/tree/master/CmlLibSample)** 
+
+## Build
+
+#### Build CmlLib
+
+1. download source codes  
+2. Build CmlLib project. if an error occurs, restore nuget package of CmlLib project. (Package name : Newtonsoft.Json, DotNetZip)  
+
+Required dll : **Newtonsoft.Json.dll, DotNetZip.dll, CmlLib.dll**
+
+#### Build CmlLibSample (Sample launcher)
+
+1. Add reference above, 'Newtonsoft.Json.dll, DotNetZip.dll, CmlLib.dll'.  
+2. Build CmlLibSample project.
+
+#### Pre-built library
+
+**[Nuget package : CustomMinecraftLauncher](https://www.nuget.org/packages/CustomMinecraftLauncher/)**  
+or go to Release tab
+
+## How to use
 
 Enter the source code in the order shown below.
 
