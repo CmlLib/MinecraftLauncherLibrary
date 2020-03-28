@@ -36,18 +36,35 @@ DotNetZip
 - [x] 다양한 실행 옵션 (서버 주소, 창 크기, 런처 이름 등)
 - [ ] .NET CORE 로 포팅 (크로스플랫폼) ([pml](https://github.com/AlphaBs/pml))
 
-## How To Use
-
-아래는 간략한 사용방법만 소개합니다. 자세한 정보는 wiki로
+## Sample
 
 **[간단한 샘플 소스코드](https://github.com/AlphaBs/MinecraftLauncherLibrary/wiki/Sample-Code)**
 
 **[샘플 런처 (CmlLibSample)](https://github.com/AlphaBs/MinecraftLauncherLibrary/releases)**  
 SampleLauncher.zip 를 다운로드하고 압축을 푼 후 CmlLibSample.exe 를 실행하세요.  
 
-**[CmlLibSample 소스코드](https://github.com/AlphaBs/MinecraftLauncherLibrary/tree/master/CmlLibSample)**  
-먼저 CmlLib 을 빌드하고, CmlLib/bin/Debug 혹은 CmlLib/bin/Release 경로에 있는 CmlLib.dll, Newtonsoft.Json.dll, DotNetZip.dll 파일을 CmlLibSample 프로젝트에 참조추가해서 CmlLibSample 을 빌드해주세요.
-CmlLib 빌드할때 오류나면 Nuget Package Restore 를 직접 해주세요.
+**[CmlLibSample 소스코드](https://github.com/AlphaBs/MinecraftLauncherLibrary/tree/master/CmlLibSample)** 
+
+## Build
+
+#### CmlLib
+1. 소스코드를 다운받으세요.
+2. CmlLib 프로젝트를 빌드하세요. 만약 오류가 발생하면 Nuget Package Restore 를 직접 해주세요. (Package name : Newtonsoft.Json, DotNetZip)  
+
+배포/참조할때 필요한 라이브러리 : Newtonsoft.Json.dll, DotNetZip.dll, CmlLib.dll
+
+#### CmlLibSample (샘플런처)
+1. 위에서 만든 라이브러리를 CmlLibSample 에 참조 추가 해주세요. (Newtonsoft.Json.dll, DotNetZip.dll, CmlLib.dll)
+2. CmlLibSample 프로젝트를 빌드하세요.
+
+#### 미리 빌드해둔 CmlLib
+**[Nuget package : CustomMinecraftLauncher](https://www.nuget.org/packages/CustomMinecraftLauncher/)**
+혹은 release 탭으로
+
+
+## How To Use
+
+아래는 간략한 사용방법만 소개합니다. 자세한 정보는 wiki로
 
 아래 나온 순서대로 소스코드를 입력하면 런처가 완성됩니다.
 
