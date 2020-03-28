@@ -47,6 +47,7 @@ SampleLauncher.zip 를 다운로드하고 압축을 푼 후 CmlLibSample.exe 를
 
 **[CmlLibSample 소스코드](https://github.com/AlphaBs/MinecraftLauncherLibrary/tree/master/CmlLibSample)**  
 먼저 CmlLib 을 빌드하고, CmlLib/bin/Debug 혹은 CmlLib/bin/Release 경로에 있는 CmlLib.dll, Newtonsoft.Json.dll, DotNetZip.dll 파일을 CmlLibSample 프로젝트에 참조추가해서 CmlLibSample 을 빌드해주세요.
+CmlLib 빌드할때 오류나면 Nuget Package Restore 를 직접 해주세요.
 
 아래 나온 순서대로 소스코드를 입력하면 런처가 완성됩니다.
 
