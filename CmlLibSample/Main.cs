@@ -53,6 +53,7 @@ namespace CmlLibSample
         bool allowOffline = true;
         MProfileInfo[] versions;
         MSession session;
+        GameLog logForm;
 
         private void Main_Shown(object sender, EventArgs e)
         {
@@ -189,13 +190,19 @@ namespace CmlLibSample
                 MLaunch launch = new MLaunch(option); // Start Process
                 var process = launch.GetProcess();
 
-                DebugProcess(process);
-
                 this.Invoke((MethodInvoker)delegate
                 {
+                    if (logForm != null)
+                        logForm.Close();
+
+                    logForm = new GameLog();
+                    logForm.Show();
+
                     groupBox1.Enabled = true;
                     groupBox2.Enabled = true;
                 });
+
+                DebugProcess(process);
             }));
             th.Start();
         }
@@ -260,8 +267,11 @@ namespace CmlLibSample
 
         void output(string msg)
         {
-            msg += "\n";
-            Console.WriteLine(msg);
+            Invoke(new Action(() =>
+            {
+                if (logForm != null)
+                    logForm.AddLog(msg);
+            }));
         }
 
         #endregion
