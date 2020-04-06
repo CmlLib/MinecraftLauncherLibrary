@@ -1,6 +1,11 @@
 ﻿# Csharp Minecraft Launcher Library
 
-## CmlLib 1.0.0
+## NOTICE!!
+
+**USE [CmlLib.Core](https://github.com/AlphaBs/CmlLib.Core)**  
+This library will not be developed anymore.
+
+## CmlLib 1.1.0
 
  This library is minecraft launcher library for C#.  
  Support all version, with Forge
