@@ -45,56 +45,44 @@ namespace CmlLib.Launcher
                             if (!isRequire)
                                 continue;
                         }
-
-                        // FORGE library
-                        if (item["downloads"] == null)
-                        {
-                            bool isn = item["natives"]?["windows"] != null;
-                            var nativeStr = "";
-                            if (isn)
-                                nativeStr = item["natives"]["windows"].ToString();
-
-                            if (name == null) continue;
-
-                            list.Add(createMLibrary(name, nativeStr, item));
-
+                        
+                        // forge clientreq
+                        var req = item["clientreq"]?.ToString();
+                        if (req != null && req.ToLower() != "true")
                             continue;
-                        }
+
+                        // support TLauncher
+                        var artifact = item["artifact"] ?? item["downloads"]?["artifact"];
+                        var classifiers = item["classifies"] ?? item["downloads"]?["classifiers"];
+                        var natives = item["natives"];
 
                         // NATIVE library
-                        var classif = item["downloads"]["classifiers"];
-                        if (classif != null)
+                        if (classifiers != null)
                         {
-                            JObject job = null;
-                            bool isgo = true;
-
                             var nativeId = "";
 
-                            if (classif["natives-windows-64"] != null && Environment.Is64BitOperatingSystem)
-                                nativeId = "natives-windows-64";
-                            else if (classif["natives-windows-32"] != null)
-                                nativeId = "natives-windows-32";
-                            else if (classif["natives-windows"] != null)
-                                nativeId = "natives-windows";
-                            else
-                                isgo = false;
+                            if (natives != null)
+                                nativeId = natives[MRule.OSName]?.ToString();
 
-                            job = (JObject)classif[nativeId];
-
-                            if (isgo)
+                            if (nativeId != null && classifiers[nativeId] != null)
                             {
-                                var obj = createMLibrary(name, nativeId, job);
-                                list.Add(obj);
+                                nativeId = nativeId.Replace("${arch}", MRule.Arch);
+                                var lObj = (JObject)classifiers[nativeId];
+                                list.Add(createMLibrary(name, nativeId, lObj));
                             }
                         }
 
                         // COMMON library
-                        var arti = item["downloads"]["artifact"];
-                        if (arti != null)
+                        if (artifact != null)
                         {
-                            var job = (JObject)arti;
-
-                            var obj = createMLibrary(name, "", job);
+                            var obj = createMLibrary(name, "", (JObject)artifact);
+                            list.Add(obj);
+                        }
+                        
+                        // library
+                        if (classifiers == null && artifact == null)
+                        {
+                            var obj = createMLibrary(name, "", item);
                             list.Add(obj);
                         }
                     }
@@ -110,16 +98,10 @@ namespace CmlLib.Launcher
                 {
                     string[] tmp = name.Split(':');
                     string front = tmp[0].Replace('.', '/');
-                    string back = "";
+                    string back = name.Substring(name.IndexOf(':') + 1);
 
-                    for (int i = 1; i <= tmp.Length - 1; i++)
-                    {
-                        if (i == tmp.Length - 1)
-                            back += tmp[i];
-                        else
-                            back += tmp[i] + ":";
-                    }
-                    string libpath = front + "/" + back.Replace(':', '/') + "/" + (back.Replace(':', '-'));
+                    string libpath = front + "/" + back.Replace(':', '/') + "/" + back.Replace(':', '-');
+
                     if (native != "")
                         libpath += "-" + native + ".jar";
                     else
@@ -144,11 +126,13 @@ namespace CmlLib.Launcher
                 else if (url.Split('/').Last() == "")
                     url += path;
 
+                var hash = job["sha1"] ?? job["checksums"]?[0];
+
                 var library = new MLibrary();
-                library.Hash = job["sha1"]?.ToString() ?? "";
+                library.Hash = hash?.ToString() ?? "";
                 library.IsNative = (nativeId != "");
                 library.Name = name;
-                library.Path = Minecraft.Library + path;
+                library.Path = System.IO.Path.Combine(Minecraft.Library, path);
                 library.Url = url;
 
                 return library;

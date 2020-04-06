@@ -9,14 +9,20 @@ namespace CmlLib.Launcher
 {
     public class MRule
     {
-        public MRule()
+        static MRule()
         {
             OSName = getOSName();
+
+            if (Environment.Is64BitOperatingSystem)
+                Arch = "64";
+            else
+                Arch = "32";
         }
 
-        public string OSName { get; private set; }
+        public static string OSName { get; private set; }
+        public static string Arch { get; private set; }
 
-        private string getOSName()
+        private static string getOSName()
         {
             var osType = Environment.OSVersion.Platform;
 
@@ -30,7 +36,7 @@ namespace CmlLib.Launcher
 
         public bool CheckOSRequire(JArray arr)
         {
-            var osName = getOSName();
+            var require = true;
 
             foreach (JObject job in arr)
             {
@@ -45,31 +51,31 @@ namespace CmlLib.Launcher
 
                     // os (containCurrentOS)
                     else if (item.Key == "os")
-                    {
-                        foreach (var os in (JObject)item.Value)
-                        {
-                            if (os.Key == "name" && os.Value.ToString() == osName)
-                            {
-                                containCurrentOS = true;
-                                break;
-                            }
-                        }
-                        containCurrentOS = false;
-                    }
+                        containCurrentOS = checkOSContains((JObject)item.Value);
 
                     else if (item.Key == "features") // etc
                         return false;
                 }
 
                 if (!action && containCurrentOS)
-                    return false;
+                    require = false;
                 else if (action && containCurrentOS)
-                    return true;
+                    require = true;
                 else if (action && !containCurrentOS)
-                    return false;
+                    require = false;
             }
 
-            return true;
+            return require;
+        }
+
+        static bool checkOSContains(JObject job)
+        {
+            foreach (var os in job)
+            {
+                if (os.Key == "name" && os.Value.ToString() == OSName)
+                    return true;
+            }
+            return false;
         }
     }
 }
