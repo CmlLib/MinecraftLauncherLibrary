@@ -1,9 +1,13 @@
 ﻿# Csharp Minecraft Launcher Library
 
-## NOTICE!!
+# NOTICE!!
+
+----------------------------------------------------
 
 **USE [CmlLib.Core](https://github.com/AlphaBs/CmlLib.Core)**  
 This library will not be developed anymore.
+
+----------------------------------------------------
 
 ## CmlLib 1.1.0
 
