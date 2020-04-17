@@ -2,7 +2,7 @@
 
 # 참고!!!
 이 라이브러리는 더이상 업데이트되지 않습니다.  
-[CmlLib.Core](https://github.com/CmlLib.Core)를 이용하세요.  
+[CmlLib.Core](https://github.com/AlphaBs/CmlLib.Core)를 이용하세요.  
 사용법은 비슷합니다.  
 
 ## CmlLib 1.0.0
